@@ -6,31 +6,33 @@ httpRequest.onload = function() {
       console.log(httpRequest.responseText);
       var movies = JSON.parse(httpRequest.responseText);
       movies.Search.forEach((item) => {
+        $("<div></div>", {
+          class: "movieContainer col-12 col-md-5 col-lg-3 text-center"
+        }).appendTo('#results');
+        var lastContainer = $("div.movieContainer:last");
         $("<img></img>", {
-          class: "imgPoster col-3",
+          class: "imgPoster img-fluid rounded p-3",
           src: item.Poster
-        }).appendTo('#results');
+        }).appendTo(lastContainer);
         $("<p></p>", {
-          class: "imgInfo col-3",
+          class: "imgInfo",
           html: "Title: " + item.Title
-        }).appendTo('#results');
+        }).appendTo(lastContainer);
         $("<p></p>", {
-          class: "imgInfo col-3",
+          class: "imgInfo",
           html: "Year: " + item.Year
-        }).appendTo('#results');
+        }).appendTo(lastContainer);
         $("<p></p>", {
-          class: "imgInfo col-3",
+          class: "imgInfo",
           html: "Type: " + item.Type
-        }).appendTo('#results');
+        }).appendTo(lastContainer);
         $("<a></a>", {
-          class: "imgInfo col-3",
+          class: "imgInfo",
           html: "https://www.imdb.com/title/" + item.imdbID,
           href: "https://www.imdb.com/title/" + item.imdbID
-        }).appendTo('#results');
+        }).appendTo(lastContainer);
         $("</br></br>", {
-        }).appendTo('#results');
-        $("<hr>", {
-        }).appendTo('#results');
+        }).appendTo(lastContainer);
       });
     } else {
       console.log(httpRequest.statusText);
@@ -78,7 +80,7 @@ random.addEventListener("click", function(event) {
     document.getElementById("userInput").value = data.toString();
     console.log(data.toString());
     }
-    var randNum = Math.random() * 7 | 3;
+    var randNum = Math.random() * 8 | 2;
     getWord('https://random-word-api.herokuapp.com/word?length=' + randNum);
 
 
