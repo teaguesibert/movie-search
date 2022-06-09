@@ -1,36 +1,57 @@
 var httpRequest = new XMLHttpRequest();
-            
+
 httpRequest.onload = function() {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
     if (httpRequest.status === 200) {
       console.log(httpRequest.responseText);
       var movies = JSON.parse(httpRequest.responseText);
+      $("<p></p>", {
+        class: "col-12 col-md-10 p-1 mb-0",
+        html: "Showing " + Object.keys(movies.Search).length + " of " + movies.totalResults
+      }).appendTo('#results');
       movies.Search.forEach((item) => {
         $("<div></div>", {
-          class: "movieContainer col-12 col-md-5 col-lg-3 text-center"
+          class: "movieContainer col-12 col-md-5 p-2",
         }).appendTo('#results');
         var lastContainer = $("div.movieContainer:last");
         $("<img></img>", {
-          class: "imgPoster img-fluid rounded p-3",
-          src: item.Poster
+          class: "imgPoster float-left p-2",
+          src: item.Poster,
+          onerror:"if (this.src = 'N/A') this.src = 'https://via.placeholder.com/300x400?text=Failed+to+Load'"
+        }).appendTo(lastContainer);
+        $("<a></a>", {
+          class: "imgInfo movieTitle",
+          html: item.Title,
+          href: "https://www.imdb.com/title/" + item.imdbID
         }).appendTo(lastContainer);
         $("<p></p>", {
-          class: "imgInfo",
-          html: "Title: " + item.Title
-        }).appendTo(lastContainer);
-        $("<p></p>", {
-          class: "imgInfo",
+          class: "imgInfo mt-1",
           html: "Year: " + item.Year
         }).appendTo(lastContainer);
         $("<p></p>", {
-          class: "imgInfo",
-          html: "Type: " + item.Type
+          class: "imgInfo text-capitalize my-0",
+          html: "Type: " + "<span class='movieType'>" + item.Type + "</span>"
         }).appendTo(lastContainer);
-        $("<a></a>", {
-          class: "imgInfo",
-          html: "https://www.imdb.com/title/" + item.imdbID,
-          href: "https://www.imdb.com/title/" + item.imdbID
-        }).appendTo(lastContainer);
+        $.getJSON("https://www.omdbapi.com/?", { apikey: "17dc75f2", i: item.imdbID}, function(movieData) {
+          if (movieData){
+            $("<p></p>", {
+              class: "imgInfo text-left mb-2 mt-0",
+              html: "Rating: " + "<span class='movieScore'>" + movieData.imdbRating + "</span>"
+            }).appendTo(lastContainer);
+            $("<p></p>", {
+              class: "imgInfo text-left m-3 m-md-2",
+              html: movieData.Plot
+            }).appendTo(lastContainer);
+            const scoreColor = document.getElementsByClassName('movieScore');
+            for (const score of scoreColor){
+              if (score.innerHTML > 5){
+                score.style.color = 'green';
+              } else {
+                score.style.color ='red';
+              }
+            }
+          }
+        })
         $("</br></br>", {
         }).appendTo(lastContainer);
       });
@@ -80,8 +101,9 @@ random.addEventListener("click", function(event) {
     document.getElementById("userInput").value = data.toString();
     console.log(data.toString());
     }
-    var randNum = Math.random() * 8 | 2;
+    var randNum = Math.random() * 8 | 3;
     getWord('https://random-word-api.herokuapp.com/word?length=' + randNum);
 
 
 });
+
