@@ -1,3 +1,52 @@
-.imgPoster{max-width:200px; width:100%;white-space:no-wrap;}
-.movieContainer{border:1px solid rgb(69, 55, 36); background: rgb(161, 213, 253);}
-#headerBg{background-image:url("../imgs/wood.jpg");background-repeat: no-repeat; background-position: center;background-color: rgb(227, 198, 154);}
+.imgPoster {
+  max-width: 300px;
+  width: 30%;
+  object-fit: contain;
+  max-height: 400px;
+  
+}
+.movieContainer {
+  border:1px solid rgb(0, 0, 0);
+  background: rgba(161, 213, 253, 0.497);
+  max-height: 25%;
+}
+#headerBg {
+  background-image:url("../imgs/wood.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(227, 198, 154, 0.924);
+}
+.search-bar{
+  background-color: rgba(24, 24, 24, 0.535);
+}
+.search-bar:focus{
+  background-color: rgba(24, 24, 24, 0.738);
+}
+::placeholder {
+  color:rgba(252, 247, 247, 0.755);
+}
+.movieTitle {
+  font-size: 1.5em;
+}
+.movieTitle:hover{
+  text-decoration: none;
+}
+@media only screen and (max-width: 768px) {
+  .imgPoster {
+    max-width: 300px;
+    width: 40%;
+  
+  }
+}
+#results {
+  background-color: rgba(227, 198, 154, 0.924);
+  padding-bottom: 1em;
+}
+.movieType {
+  font-size: 20px;
+  font-weight: 500;
+}
+.movieScore {
+  font-size: 40px; 
+  font-weight: 350;
+}
