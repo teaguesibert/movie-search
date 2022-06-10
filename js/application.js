@@ -6,7 +6,7 @@ httpRequest.onload = function() {
       console.log(httpRequest.responseText);
       var movies = JSON.parse(httpRequest.responseText);
       $("<p></p>", {
-        class: "col-12 col-md-10 p-1 mb-0",
+        class: "col-12 col-md-10 p-1 mb-0 text-light",
         html: "Showing " + Object.keys(movies.Search).length + " of " + movies.totalResults
       }).appendTo('#results');
       movies.Search.forEach((item) => {
@@ -17,7 +17,7 @@ httpRequest.onload = function() {
         $("<img></img>", {
           class: "imgPoster float-left p-2",
           src: item.Poster,
-          onerror:"if (this.src = 'N/A') this.src = 'https://via.placeholder.com/300x400?text=Failed+to+Load'"
+          onerror:"if (this.src = 'N/A') this.src = 'https://via.placeholder.com/300x400?text=Poster+Unavailable'"
         }).appendTo(lastContainer);
         $("<a></a>", {
           class: "imgInfo movieTitle",
