@@ -194,10 +194,10 @@ li:hover{
 }
 
 ::selection {
-  background: #B4C8D9; /* WebKit/Blink Browsers */
+  background: #495F73; /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-  background: #B4C8D9; /* Gecko Browsers */
+  background: #495F73; /* Gecko Browsers */
 }
 
 
