@@ -6,12 +6,12 @@ httpRequest.onload = function() {
       console.log(httpRequest.responseText);
       var movies = JSON.parse(httpRequest.responseText);
       $("<p></p>", {
-        class: "col-12 col-md-10 p-1 mb-0 text-light",
+        class: "col-11 col-md-10 p-1 mb-0 text-dark",
         html: "Showing " + Object.keys(movies.Search).length + " of " + movies.totalResults
       }).appendTo('#results');
       movies.Search.forEach((item) => {
         $("<div></div>", {
-          class: "movieContainer col-12 col-md-5 p-2",
+          class: "movieContainer col-11 col-md-5 mx-3 p-2 mb-4",
         }).appendTo('#results');
         var lastContainer = $("div.movieContainer:last");
         $("<img></img>", {
@@ -36,7 +36,7 @@ httpRequest.onload = function() {
           if (movieData){
             $("<p></p>", {
               class: "imgInfo text-left mb-2 mt-0",
-              html: "Rating: " + "<span class='movieScore'>" + movieData.imdbRating + "</span>"
+              html: "Rating: " + "<span class='movieScore'>" + movieData.imdbRating + "</span>" +" /10"
             }).appendTo(lastContainer);
             $("<p></p>", {
               class: "imgInfo text-left m-3 m-md-2",
@@ -45,9 +45,9 @@ httpRequest.onload = function() {
             const scoreColor = document.getElementsByClassName('movieScore');
             for (const score of scoreColor){
               if (score.innerHTML > 5){
-                score.style.color = 'green';
+                score.style.color = '#6AFAAF';
               } else {
-                score.style.color ='red';
+                score.style.color ='#DAA397';
               }
             }
           }
