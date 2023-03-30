@@ -7,7 +7,7 @@ A simple movie search website that allows users to search for movies and TV seri
 - Search for movies and TV series by title
 - Displays movie and TV series details
 - Pagination support
-- Random title generator
+- Random genre search
 - Responsive design
 
 ## Getting Started
