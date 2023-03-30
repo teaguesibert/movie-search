@@ -227,3 +227,12 @@ input[data-autocompleted] {
   
   }
 }
+
+#footer.container-fluid{
+  margin: 0;
+  background-color: #B4C8D9;
+}
+
+#nextButton, #prevButton{
+  font-weight: 500;
+}
