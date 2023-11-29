@@ -2,6 +2,8 @@
 
 A simple movie search website that allows users to search for movies and TV series using the OMDB API. The website displays search results with posters, titles, years, types, ratings, and plot summaries. It also supports pagination for easy navigation through the search results.
 
+![screenshot of movie search site](assets/images/moviesearchts.jpg)
+
 ## Features
 
 - Search for movies and TV series by title
@@ -33,5 +35,3 @@ An API key is required to access the OMDB API. Replace `[yourkey]` in the JavaSc
 
 ```javascript
 httpRequest.open("GET", `https://www.omdbapi.com/?s=${input}&plot=full&apikey=[yourkey]&page=${page}`);
-
-![screenshot of movie search site](assets/images/moviesearchts.jpg)
