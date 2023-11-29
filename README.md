@@ -33,3 +33,5 @@ An API key is required to access the OMDB API. Replace `[yourkey]` in the JavaSc
 
 ```javascript
 httpRequest.open("GET", `https://www.omdbapi.com/?s=${input}&plot=full&apikey=[yourkey]&page=${page}`);
+
+![screenshot of movie search site](assets/images/moviesearchts.jpg)

@@ -1,5 +1,6 @@
 const httpRequest = new XMLHttpRequest();
 
+// genres that are predefined by the OMDB API
 const movieGenres = [
   "action",
   "adventure",
